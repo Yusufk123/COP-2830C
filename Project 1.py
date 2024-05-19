@@ -9,12 +9,13 @@ from xmlrpc.client import boolean
 currentTime = time.localtime()
 timeFormat = time.strftime("%I:%M %p", currentTime)
 bdtxt = "is"
+varlist = ["coffeeDranken", "busyday", "bdtxt"]
 
 #User Inputs
 coffeeDranken = int(input("How many coffee have you drank today? "))
 busyday = bool(input("Is Today is a busy day? Leave Blank for No: "))
 
-#print("It is currently", timeFormat, "\n")
+print(varlist)
 
 #Code:
 def Code(coffeeDranken, busyday, bdtxt):
