@@ -17,10 +17,16 @@ busyday = bool(input("Is Today is a busy day? Leave Blank for No: "))
 #print("It is currently", timeFormat, "\n")
 
 #Code:
-if  busyday != True:
+def Code(coffeeDranken, busyday, bdtxt):
+    if  busyday != True:
         bdtxt = "isn't"
         
-if (currentTime.tm_hour < 15 and coffeeDranken < 3) or busyday == True:
-    print("Ive had", coffeeDranken, "cups of coffee already, its", timeFormat, "and there", bdtxt, "a busy day ahead, So I can keep drinking coffee.\n")    
-else:
-    print("Ive had", coffeeDranken, "cups of coffee already, its", timeFormat, "and there", bdtxt, "a busy day ahead, So I shouldn't keep drinking coffee today.\n")
+    if (currentTime.tm_hour < 15 and coffeeDranken < 3) or busyday == True:
+        print("Ive had", coffeeDranken, "cups of coffee already, its", timeFormat, "and there", bdtxt, "a busy day ahead, So I can keep drinking coffee.\n")    
+    else:
+        print("Ive had", coffeeDranken, "cups of coffee already, its", timeFormat, "and there", bdtxt, "a busy day ahead, So I shouldn't keep drinking coffee today.\n")
+        
+#Call Function
+Code(coffeeDranken, busyday, bdtxt)
+
+#End of Program
