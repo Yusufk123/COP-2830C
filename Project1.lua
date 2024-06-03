@@ -1,6 +1,3 @@
-import time
-from xmlrpc.client import boolean
-
 --Scenario: Should I keep drinking coffee today?
 
 --If it's before 3 pm, I've had less than 3 cups of coffee already, and I have a busy day ahead, then I can keep drinking coffee today. Otherwise, I should stop drinking any more coffee today.
@@ -9,27 +6,35 @@ from xmlrpc.client import boolean
 local currentTime, timeFormat, bdtxt, varlist, coffeeDranken, busyday
 
 --Variables Initialization:
-currentTime = time.localtime()
-timeFormat = time.strftime("%I:%M %p", currentTime)
+currentTime = os.time
+timeFormat = (os.date("%H:%M:%S"))
 bdtxt = "is"
-varlist = ["coffeeDranken", "busyday", "bdtxt"]
+--varlist = {"coffeeDranken", "busyday", "bdtxt"}
 
 --User Inputs
-coffeeDranken = int(input("How many coffee have you drank today? "))
-busyday = bool(input("Is Today is a busy day? Leave Blank for No: "))
-
-print(varlist)
+print("How many coffee have you drank today? ")
+io.flush()
+coffeeDranken = io.read("*n")
+print("Is Today is a busy day? Leave false for No: ")
+io.flush()
+busyday = io.read()
+print("")
+--print(varlist)
 
 --Code:
-def Code(coffeeDranken, busyday, bdtxt):
-    if  busyday != True:
+function Code(coffeeDranken, busyday, bdtxt)
+    if(busyday ~= true)
+    then
         bdtxt = "isn't"
         
-    if (currentTime.tm_hour < 15 and coffeeDranken < 3) or busyday == True:
+    elseif(currentTime.tm_hour < 15) and (coffeeDranken < 3) or (busyday == true)
+    then
         print("Ive had", coffeeDranken, "cups of coffee already, its", timeFormat, "and there", bdtxt, "a busy day ahead, So I can keep drinking coffee.\n")    
-    else:
+    else
         print("Ive had", coffeeDranken, "cups of coffee already, its", timeFormat, "and there", bdtxt, "a busy day ahead, So I shouldn't keep drinking coffee today.\n")
-        
+    end
+end
+
 --Call Function
 Code(coffeeDranken, busyday, bdtxt)
 
